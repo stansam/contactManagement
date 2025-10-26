@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Add Contact - Contact Manager{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <div class="form-card">
+        <h1>Add New Contact</h1>
+        <form method="POST" action="{{ url_for('main.add_contact') }}" id="addContactForm">
+            <div class="form-group">
+                <label for="mobile_phone">Mobile Phone Number</label>
+                <input type="tel" id="mobile_phone" name="mobile_phone" required placeholder="+1234567890">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="contact@example.com">
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea id="address" name="address" rows="3" required placeholder="Enter full address"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="registration_number">Registration Number</label>
+                <input type="text" id="registration_number" name="registration_number" required placeholder="REG-12345">
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Add Contact</button>
+                <a href="{{ url_for('main.dashboard') }}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/contact.js') }}"></script>
+{% endblock %}

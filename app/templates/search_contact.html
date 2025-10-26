@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Search Contact - Contact Manager{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <div class="form-card">
+        <h1>Search Contact</h1>
+        <form method="POST" action="{{ url_for('main.search_contact') }}" id="searchContactForm">
+            <div class="form-group">
+                <label for="registration_number">Registration Number</label>
+                <input type="text" id="registration_number" name="registration_number" required placeholder="Enter registration number">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+
+        {% if contact %}
+            <div class="search-results">
+                <h2>Search Results</h2>
+                <div class="contact-card">
+                    <div class="contact-header">
+                        <span class="registration-badge">{{ contact.registration_number }}</span>
+                    </div>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <strong>Phone:</strong>
+                            <span>{{ contact.mobile_phone }}</span>
+                        </div>
+                        <div class="contact-item">
+                            <strong>Email:</strong>
+                            <span>{{ contact.email }}</span>
+                        </div>
+                        <div class="contact-item">
+                            <strong>Address:</strong>
+                            <span>{{ contact.address }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/contact.js') }}"></script>
+{% endblock %}
